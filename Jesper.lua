@@ -36,7 +36,6 @@ local timerStone							= mod:NewTimer(30, "StoneDuration", 97095)
 local timerFlamingAbyssal			= mod:NewTimer(30, "NextFlamingAbyssal")
 
 
-
 function mod:OnCombatStart(delay)	
 	timerMoltenGiant:Start()
 	self:ScheduleMethod(60, "MoltenGiant")
