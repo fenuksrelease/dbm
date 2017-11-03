@@ -41,7 +41,7 @@ local timerSummonFelhunter		= mod:NewTimer(60, "NextSummonFelhunter", 97083)
 local timerSummonFelguard		= mod:NewTimer(110, "NextSummonFelguard", 97086)
 local timerRainofFire				= mod:NewTimer(35, "NextRainFire", 97245)
 local timerNetherProtection		= mod:NewTimer(60, "NetherProtection", 97071)
-local timerShadowVolley			= mod:NewTimer(49, "NextShadowVolley", 97244)
+local timerShadowVolley			= mod:NewTimer(50, "NextShadowVolley", 97244)
 
 
 local impmsg 			= true
@@ -58,16 +58,15 @@ function mod:OnCombatStart(delay)
 	timerSummonFelhunter:Start()
 	timerRainofFire:Start(36)
 	self:ScheduleMethod(36, "RainOfFire")
-	--timerFear:Start()
 	WarnNetherProtectionS:Schedule(45)
 	timerNetherProtection:Start()
 	timerShadowVolley:Start(51)
-	self:ScheduleMethod(51, "ShadowVolley")
 end
 
 function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "Shadow Bolt Volley" and unit == "boss1" then
 		specWarnShadowVolley:Show()
+		timerShadowVolley:Start()
 	end
 end
 
@@ -90,11 +89,6 @@ function mod:RainOfFire()
 	WarnRainOfFireSelf:Show()
 	timerRainofFire:Start()
 	self:ScheduleMethod(35, "RainOfFire")
-end
-
-function mod:ShadowVolley()
-	timerShadowVolley:Start()
-	self:ScheduleMethod(49, "ShadowVolley")
 end
 
 function mod:ResetImpSummon()
