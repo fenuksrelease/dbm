@@ -88,7 +88,9 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(97262) then -- Storm Cloud
 		specWarnStormCloud:Show()
-		SendChatMessage(L.StormCloud, "Yell")
+		if args.destName == UnitName("player") then
+			SendChatMessage(L.StormCloud, "Yell")
+		end
 		
 	elseif args:IsSpellID(97123) then -- Fel Infusion
 		if args.amount == nil then args.amount = 0 end
