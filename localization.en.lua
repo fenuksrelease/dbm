@@ -16,6 +16,7 @@ L:SetTimerLocalization{
 	
 L:SetMiscLocalization{
 	YellPull						= "Hello. My name is G.R.D. Ian 2.0, spelled like Guardian. Do you want to play ?",
+	KillIan						= "Daddy, why can't I control my body anymore ?",
 	YellBombMe				= "Bomb on me! Run!",
 	Rebuild						= "Rebuild me, Bots !",
 	BombKill					= "The bomb killed me!",
@@ -158,6 +159,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	YellPullJeff						= "My name… ehh... Jeff. Yes, that’s it, Jeff.",
+	KillJeff							= "So this is what happens to all those people I kill. Interesting, yet bad. Wish I would still be alive to never do that again. Well, what can you do ? Sorry, yes. I’ll die now. See you on the other side. Bye bye !",
 	VolleyKill						= "The Shadow Bolt Volley killed me!",
 }
 
@@ -176,6 +178,7 @@ L:SetTimerLocalization{
 	NextWorldBreaker			= "Next World Breaker",
 	StormCloudCD					= "Seconds left on Storm Cloud"
 }
+
 
 L:SetWarningLocalization{
 	specWarnWorldBreaker 	= "World Breaker, come closer!",
@@ -207,34 +210,46 @@ L:SetMiscLocalization{
 }
 
 --------------------
---  Iron Council  --
+--  Confused Raiders --
 --------------------
-L = DBM:GetModLocalization("IronCouncil")
+L = DBM:GetModLocalization("Confusedraiders")
 
 L:SetGeneralLocalization{
-	name = "Iron Council"
+	name = "The Confused Raiders"
 }
 
 L:SetWarningLocalization{
+	WarnHexTarget				= "Hex on >%s<",
+	WarnHex						= "Hex on you",
+	WarnFear						= "Psychic Scream",
+	WarnShadowfury				= "Shadowfury"
 }
 
 L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundLightningTendrils	= "Play sound on $spell:63486",
-	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
-	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload		= "Always warn on $spell:63481 (otherwise, only when targeted)",
-	PlaySoundOnOverload			= "Play sound on $spell:63481",
-	PlaySoundDeathRune			= "Play sound on $spell:63490"
+	OptionWarnHexTarget		= "Announce Hex targets",
+	WarnHex						= "Announce Hex on you",
+	WarnFear						= "Announce Psychic Scream",
+	WarnShadowfury				= "Announce Shadowfury"
+
 }
 
 L:SetMiscLocalization{
-	Steelbreaker		= "Steelbreaker",
-	RunemasterMolgeim	= "Runemaster Molgeim",
-	StormcallerBrundir 	= "Stormcaller Brundir"
+	Oberon						= "Oberon",
+	Jimmy						= "Jimmy",
+	Phantasm 					= "Phantasm",
+	Jinha							= "Jinha",
+	Nexxi							= "Nexxi",
+	Disengagelol				= "Disengagelol",
+	Osiris						= "Osiris",
+	Shaeria						= "Shaeria",
+	Kurmak						= "Kurmak",
+	Gummyboi					= "Gummyboi",
+	pull							= "Bring it !"
 }
+
 
 ----------------------------
 --  Algalon the Observer  --
@@ -276,43 +291,214 @@ L:SetMiscLocalization{
 	PullCheck				= "Time until Algalon transmits distress signal= (%d+) min."
 }
 
+
+--------------------------------
+--  Tree_of_Destruction				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Destruction")
+
+L:SetGeneralLocalization{
+	name = "Tree of Destruction"
+}
+
+L:SetTimerLocalization{
+	NextSummonAdds				= "Next Summon Adds"
+}
+
+L:SetMiscLocalization{
+	YellPullTree				= "TREEEEEEESSS"
+}
+
+L:SetWarningLocalization{
+	FireBomb					= "Living Bomb on >%s<",
+	BurningFlesh				= "Burning Flesh on >%s< (%d)",
+	Adds					= "Adds appeared",
+	SummonedAdds				= "Adds appeared!",
+	SpecWarnFireBomb	 	= "Living Bomb on you!"
+}
+
+L:SetOptionLocalization{
+	BurningFlesh				= "Announce Burning Flesh",
+	FireBomb					= "Announce Living Bomb targets",
+	Adds					= "Announce Adds",
+	SummonedAdds			= "Announce Adds",
+	SpecWarnFireBomb	 	= "Show special warning when you are effected by Fire Bomb",
+	NextSummonAdds				= "Show timer for next Adds"
+}
+
+
+--------------------------------
+--  Tree_of_Life				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Life")
+
+L:SetGeneralLocalization{
+	name = "Tree of Life"
+}
+
+L:SetTimerLocalization{
+	NextSummonAdds				= "Next Summon Adds"	
+}
+
+L:SetMiscLocalization{
+	YellPullTree				= "TREEEEEEESSS"
+}
+
+L:SetWarningLocalization{
+	BranchSwipe					= "Branch Swipe on >%s< (%d)",
+	FireBomb					= "Living Bomb on >%s<",
+	BurningFlesh				= "Burning Flesh on >%s<",
+	Adds					= "Adds appeared",
+	SummonedAdds				= "Adds appeared!",
+	SpecWarnFireBomb	 	= "Living Bomb on you!"
+}
+
+L:SetOptionLocalization{
+	BurningFlesh				= "Announce Burning Flesh",
+	FireBomb					= "Announce Living Bomb targets",
+	Adds					= "Announce Adds",
+	SummonedAdds			= "Announce Adds",
+	SpecWarnFireBomb	 	= "Show special warning when you are effected by Fire Bomb",
+	NextSummonAdds				= "Show timer for next Adds"
+}
+
+
+--------------------------------
+--  Tree_of_Death				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Death")
+
+L:SetGeneralLocalization{
+	name = "Tree of Death"
+}
+
+L:SetTimerLocalization{
+	NextSummonAdds				= "Next Summon Adds",
+	NextDeathNova				= "Next Death Nova"
+}
+
+L:SetMiscLocalization{
+
+	YellPullTree				= "TREEEEEEESSS"
+}
+
+L:SetWarningLocalization{
+	SoulShatter					= "Soul Shatter on >%s< (%d)",
+	FireBomb					= "Living Bomb on >%s<",
+	VoidBlast				= "Void Blast on >%s<",
+	Adds					= "Adds appeared",
+	SummonedAdds				= "Adds appeared!",
+	SpecWarnDeathNova	 	= "Death Nova Run 20 yards away!"
+}
+
+L:SetOptionLocalization{
+	VoidBlast				= "Announce Void Blast Targets",
+	SoulShatter					= "Announce Soul Shatter Stacks",
+	Adds					= "Announce Adds",
+	SummonedAdds			= "Announce Adds",
+	SpecWarnDeathNova	 	= "Show special warning when Death Nova Happens",
+	NextDeathNova			= "Show timer for Death Nova",
+	NextSummonAdds				= "Show timer for next Adds"
+}
+
+
+--------------------------------
+--  Chillich				   --
+--------------------------------
+L = DBM:GetModLocalization("Chillich")
+
+L:SetGeneralLocalization{
+	name = "Chillich"
+}
+
+L:SetTimerLocalization{
+	NextNecromancy				= "Next Necromancy Phase",
+	NextEntomb						= "Next Ice Block"
+}
+
+L:SetMiscLocalization{
+	YellPullChillich				= "Why do you disturb ? I'm chilling here."
+}
+
+L:SetWarningLocalization{
+	specWarnBlisteringCold	= "Hide behind the Ice Blocks!",
+	WarnBlizzard					= "Watch out for the Blizzard!",
+	WarnIceBlock				= "Ice Block on >%s<",
+	Necromancy	 				= "Necromancy Phase, kill adds!",
+	specWarnIceBlock			= "You have Ice Block!"
+}
+
+L:SetOptionLocalization{
+	OptionIceBlock				= "Announce Ice Block targets (unreliable)",
+	Necromancy					= "Announce Necromancy Phase",
+	WarnBlizzard					= "Announce Blizzard",
+	WarnIceBlock				= "Announce Ice Block on target",
+	specWarnBlisteringCold 	= "Show special warning when Blistering Cold happens",
+	NextNecromancy			= "Show timer for Necromancy Phase",
+	NextEntomb					= "Show timer for next Ice Block",
+	specWarnIceBlock			= "Announce when you are an Ice Block"
+}
+
+--------------------------------
+--  Grommash_HellScream				   --
+--------------------------------
+L = DBM:GetModLocalization("Grommash_Hellscream")
+
+L:SetGeneralLocalization{
+	name = "Grommash Hellscream"
+}
+
+L:SetTimerLocalization{
+	nextBerserkerStance				= "Next Beserker Stance",
+	nextBattleStance					= "Next Battle Stance",
+	nextWhirlwind 						= "Next Whirlwind",
+	nextBladestorm 					= "Next Bladestorm"
+}
+
+L:SetMiscLocalization{
+
+	YellPullGrommash				= "Do you DARE challenge the Warsong chieftain ?!?!"
+}
+
+L:SetWarningLocalization{
+	warnBerserkerStance		= "Berzerker Stance, Stack on Bos!",
+	warnBattleStance			= "Battle Stance, ranged go back!",
+	specWhirldWind 			= "Whirlwind - Move away!"
+}
+
+L:SetOptionLocalization{
+	warnBerserkerStance			= "Announce Beserker Stance",
+	warnBattleStance				= "Announce Battle Stance",
+	specWhirldWind					= "Announce special warning for Whirlwind",
+	nextBerserkerStance			= "Show timer for next Beserker Stance ",
+	nextBattleStance				= "Show timer for next Battle Stance",
+	nextWhirlwind	 				= "Show timer for next Whirlwind",
+	nextBladestorm					= "Show timer for next Bladestorm"
+}
+
 ----------------
 --  Kologarn  --
 ----------------
-L = DBM:GetModLocalization("Kologarn")
+L = DBM:GetModLocalization("Azeroth")
 
 L:SetGeneralLocalization{
-	name = "Kologarn"
+	name = "Space ?"
 }
 
 L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerLeftArm		= "Left Arm respawn",
-	timerRightArm		= "Right Arm respawn",
-	achievementDisarmed	= "Timer for Disarm"
+
 }
 
 L:SetOptionLocalization{
-	timerLeftArm			= "Show timer for Left Arm respawn",
-	timerRightArm			= "Show timer for Right Arm respawn",
-	achievementDisarmed		= "Show timer for Disarm achievement",
-	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
-	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "Play sound on $spell:63346",
-	YellOnBeam				= "Yell on $spell:63346",
+
 }
 
 L:SetMiscLocalization{
-	Yell_Trigger_arm_left	= "Just a scratch!",
-	Yell_Trigger_arm_right	= "Only a flesh wound!",
-	Health_Body				= "Kologarn Body",
-	Health_Right_Arm		= "Right Arm",
-	Health_Left_Arm			= "Left Arm",
-	FocusedEyebeam			= "his eyes on you",
-	YellBeam				= "Focused Eyebeam on me!"
 }
+
 
 ---------------
 --  Auriaya  --
