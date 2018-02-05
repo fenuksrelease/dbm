@@ -19,13 +19,13 @@ mod:RegisterEvents(
 )
 
 local specWarnIceBlock			= mod:NewSpecialWarning("specWarnIceBlock")
-local specWarnBlisteringCold	= mod:NewSpecialWarning("specWarnBlisteringCold")
+local specWarnBlisteringCold		= mod:NewSpecialWarning("specWarnBlisteringCold")
 
-local WarnNecromancy 	= mod:NewAnnounce("Necromancy", 3)
+local WarnNecromancy 			= mod:NewAnnounce("Necromancy", 3)
 local WarnIceBlock 			= mod:NewAnnounce("WarnIceBlock", 2, 97208, false, "OptionIceBlock")
 local WarnBlizzard			= mod:NewAnnounce("WarnBlizzard", 3, 97266)
 
-local timerNecromancy		= mod:NewTimer(90, "NextNecromancy")
+local timerNecromancy			= mod:NewTimer(90, "NextNecromancy")
 local timerEntomb			= mod:NewTimer(40, "NextEntomb")
 
 local once = false
@@ -94,20 +94,5 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerNecromancy:Start()
 	end
 end
-
---[[
-function mod:UNIT_DIED(args)
-	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
-		local guid = tonumber(args.destGUID:sub(8, 12), 16)
-		if guid == 570102 then -- Soul Weaver
-			SoulWeaver = SoulWeaver + 1
-				if SoulWeaver == 4 then
-					timerNecromancy:Start()
-					self:ScheduleMethod(99, "NecromancyPhase")
-				end
-		end
-	end
-end
---]]
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
