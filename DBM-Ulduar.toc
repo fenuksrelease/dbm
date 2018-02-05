@@ -22,8 +22,8 @@ ConfusedRaiders.lua
 Space.lua
 Chillich.lua
 Gromash.lua
-Tree_of_Destruction.lua
 Tree_of_Life.lua
+Tree_of_Destruction.lua
 Tree_of_Death.Lua
 Auriaya.lua
 Mimiron.lua

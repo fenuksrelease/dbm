@@ -13,7 +13,9 @@ mod:RegisterEvents(
 	"SPELL_SUMMON",
 	"SPELL_PERIODIC_DAMAGE",
 	"SPELL_AURA_APPLIED_DOSE",
-	"UNIT_SPELLCAST_START"
+	"UNIT_SPELLCAST_START",
+	"UNIT_DIED",
+	"SPELL_AURA_REMOVED"
 )
 
 local specWarnIceBlock			= mod:NewSpecialWarning("specWarnIceBlock")
@@ -23,23 +25,22 @@ local WarnNecromancy 	= mod:NewAnnounce("Necromancy", 3)
 local WarnIceBlock 			= mod:NewAnnounce("WarnIceBlock", 2, 97208, false, "OptionIceBlock")
 local WarnBlizzard			= mod:NewAnnounce("WarnBlizzard", 3, 97266)
 
-local timerNecromancy		= mod:NewTimer(60, "NextNecromancy")
+local timerNecromancy		= mod:NewTimer(90, "NextNecromancy")
 local timerEntomb			= mod:NewTimer(40, "NextEntomb")
 
 local once = false
-
+local SoulWeaver = 0
 
 function mod:OnCombatStart(delay)	
 	timerNecromancy:Start(70)
 	self:ScheduleMethod(70, "NecromancyPhase")
 	timerEntomb:Start()
 	once = false
+	local SoulWeaver = 0
 end
 
 function mod:NecromancyPhase()
 	WarnNecromancy:Show()
-	timerNecromancy:Start()
-	self:ScheduleMethod(60, "NecromancyPhase")
 end
 
 function mod:BlizzardReset()
@@ -65,7 +66,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			WarnIceBlock:Show()
 		end
-		
 	end
 end
 
@@ -88,5 +88,26 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 	end
 end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(97213) then
+		timerNecromancy:Start()
+	end
+end
+
+--[[
+function mod:UNIT_DIED(args)
+	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
+		local guid = tonumber(args.destGUID:sub(8, 12), 16)
+		if guid == 570102 then -- Soul Weaver
+			SoulWeaver = SoulWeaver + 1
+				if SoulWeaver == 4 then
+					timerNecromancy:Start()
+					self:ScheduleMethod(99, "NecromancyPhase")
+				end
+		end
+	end
+end
+--]]
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

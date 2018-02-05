@@ -19,8 +19,8 @@ local specWarnWhirldWind		= mod:NewSpecialWarning("specWhirldWind")
 
 local timerBerserker 				= mod:NewTimer(60, "nextBerserkerStance", 97222)
 local timerBattle 					= mod:NewTimer(60, "nextBattleStance", 97221)
-local timerWhirlwind				= mod:NewTimer(17.5, "nextWhirlwind", 1680)
-local timerBladestorm				= mod:NewTimer(14, "nextBladestorm", 46924)
+local timerWhirlwind				= mod:NewTimer(7.5, "nextWhirlwind", 1680)
+local timerBladestorm				= mod:NewTimer(9, "nextBladestorm", 46924)
 
 --[[
 		Stance 1 = Battle Stance
@@ -40,16 +40,16 @@ function mod:StanceSwitch()
 		timerBattle:Start()
 		stance = 2
 		self:ScheduleMethod(60, "StanceSwitch")
-		warnBattle:Show()
+		warnBerserker:Show()
 		timerWhirlwind:Stop()
 		timerBladestorm:Start(10)
 	elseif stance == 2 then
 		timerBerserker:Start()
 		stance = 1
 		self:ScheduleMethod(60, "StanceSwitch")
-		warnBerserker:Show()
+		warnBattle:Show()
 		timerBladestorm:Stop()
-		timerWhirlwind:Start(10)
+		timerWhirlwind:Start(10.5)
 	end
 end
 

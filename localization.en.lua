@@ -250,155 +250,34 @@ L:SetMiscLocalization{
 	pull							= "Bring it !"
 }
 
-
-----------------------------
---  Algalon the Observer  --
-----------------------------
-L = DBM:GetModLocalization("Algalon")
+----------------
+--  Space?  --
+----------------
+L = DBM:GetModLocalization("Azeroth")
 
 L:SetGeneralLocalization{
-	name = "Algalon the Observer"
-}
-
-L:SetTimerLocalization{
-	NextCollapsingStar		= "Next Collapsing Star",
-	PossibleNextCosmicSmash	= "Next possible Cosmic Smash",
-	TimerCombatStart		= "Combat starts"
+	name = "Space ?"
 }
 
 L:SetWarningLocalization{
-	WarningPhasePunch		= "Phase Punch on >%s< - Stack %d",
-	WarningCosmicSmash 		= "Cosmic Smash - Explosion in 4 seconds",
-	WarnPhase2Soon			= "Phase 2 soon",
-	warnStarLow				= "Collapsing Star is low"
-}
-
-L:SetOptionLocalization{
-	WarningPhasePunch		= "Announce Phase Punch targets",
-	NextCollapsingStar		= "Show timer for next Collapsing Star",
-	WarningCosmicSmash 		= "Show warning for Cosmic Smash",
-	PossibleNextCosmicSmash	= "Show timer for next possible Cosmic Smash",
-	TimerCombatStart		= "Show timer for start of combat",
-	WarnPhase2Soon			= "Show pre-warning for Phase 2 (at ~23%)",
-	warnStarLow				= "Show special warning when Collapsing Star is low (at ~25%)"
-}
-
-L:SetMiscLocalization{
-	YellPull				= "Your actions are illogical. All possible results for this encounter have been calculated. The Pantheon will receive the Observer's message regardless of outcome.",
-	YellKill				= "I have seen worlds bathed in the Makers' flames, their denizens fading without as much as a whimper. Entire planetary systems born and razed in the time that it takes your mortal hearts to beat once. Yet all throughout, my own heart devoid of emotion... of empathy. I. Have. Felt. Nothing. A million-million lives wasted. Had they all held within them your tenacity? Had they all loved life as you do?",
-	Emote_CollapsingStar	= "%s begins to Summon Collapsing Stars!",
-	Phase2					= "Behold the tools of creation",
-	PullCheck				= "Time until Algalon transmits distress signal= (%d+) min."
-}
-
-
---------------------------------
---  Tree_of_Destruction				   --
---------------------------------
-L = DBM:GetModLocalization("Tree_of_Destruction")
-
-L:SetGeneralLocalization{
-	name = "Tree of Destruction"
+	WarnStarCollapse				= "Star Collapse - Move away!",	
+	WarnBlackHole					= "Black Hole appeared!",
+	WarnConstelation				= "Constelation spawned!"
 }
 
 L:SetTimerLocalization{
-	NextSummonAdds				= "Next Summon Adds"
-}
-
-L:SetMiscLocalization{
-	YellPullTree				= "TREEEEEEESSS"
-}
-
-L:SetWarningLocalization{
-	FireBomb					= "Living Bomb on >%s<",
-	BurningFlesh				= "Burning Flesh on >%s< (%d)",
-	Adds					= "Adds appeared",
-	SummonedAdds				= "Adds appeared!",
-	SpecWarnFireBomb	 	= "Living Bomb on you!"
+	NextCollapsingStar				= "Next Collapsing Star",
+	NextBlackhole					= "Next Black hole",
+	NextConstelation				= "Next Constelation"
 }
 
 L:SetOptionLocalization{
-	BurningFlesh				= "Announce Burning Flesh",
-	FireBomb					= "Announce Living Bomb targets",
-	Adds					= "Announce Adds",
-	SummonedAdds			= "Announce Adds",
-	SpecWarnFireBomb	 	= "Show special warning when you are effected by Fire Bomb",
-	NextSummonAdds				= "Show timer for next Adds"
-}
-
-
---------------------------------
---  Tree_of_Life				   --
---------------------------------
-L = DBM:GetModLocalization("Tree_of_Life")
-
-L:SetGeneralLocalization{
-	name = "Tree of Life"
-}
-
-L:SetTimerLocalization{
-	NextSummonAdds				= "Next Summon Adds"	
-}
-
-L:SetMiscLocalization{
-	YellPullTree				= "TREEEEEEESSS"
-}
-
-L:SetWarningLocalization{
-	BranchSwipe					= "Branch Swipe on >%s< (%d)",
-	FireBomb					= "Living Bomb on >%s<",
-	BurningFlesh				= "Burning Flesh on >%s<",
-	Adds					= "Adds appeared",
-	SummonedAdds				= "Adds appeared!",
-	SpecWarnFireBomb	 	= "Living Bomb on you!"
-}
-
-L:SetOptionLocalization{
-	BurningFlesh				= "Announce Burning Flesh",
-	FireBomb					= "Announce Living Bomb targets",
-	Adds					= "Announce Adds",
-	SummonedAdds			= "Announce Adds",
-	SpecWarnFireBomb	 	= "Show special warning when you are effected by Fire Bomb",
-	NextSummonAdds				= "Show timer for next Adds"
-}
-
-
---------------------------------
---  Tree_of_Death				   --
---------------------------------
-L = DBM:GetModLocalization("Tree_of_Death")
-
-L:SetGeneralLocalization{
-	name = "Tree of Death"
-}
-
-L:SetTimerLocalization{
-	NextSummonAdds				= "Next Summon Adds",
-	NextDeathNova				= "Next Death Nova"
-}
-
-L:SetMiscLocalization{
-
-	YellPullTree				= "TREEEEEEESSS"
-}
-
-L:SetWarningLocalization{
-	SoulShatter					= "Soul Shatter on >%s< (%d)",
-	FireBomb					= "Living Bomb on >%s<",
-	VoidBlast				= "Void Blast on >%s<",
-	Adds					= "Adds appeared",
-	SummonedAdds				= "Adds appeared!",
-	SpecWarnDeathNova	 	= "Death Nova Run 20 yards away!"
-}
-
-L:SetOptionLocalization{
-	VoidBlast				= "Announce Void Blast Targets",
-	SoulShatter					= "Announce Soul Shatter Stacks",
-	Adds					= "Announce Adds",
-	SummonedAdds			= "Announce Adds",
-	SpecWarnDeathNova	 	= "Show special warning when Death Nova Happens",
-	NextDeathNova			= "Show timer for Death Nova",
-	NextSummonAdds				= "Show timer for next Adds"
+	WarnStarCollapse				= "Announce Star Collapse",	
+	WarnBlackHole					= "Announce Black Hole",
+	WarnConstelation				= "Announce Constelation",
+	NextCollapsingStar				= "Show timer for next Star Collapse",
+	NextBlackhole					= "Show timer for next Black Hole",
+	NextConstelation				= "Show timer for next Constelation"
 }
 
 
@@ -461,7 +340,7 @@ L:SetMiscLocalization{
 }
 
 L:SetWarningLocalization{
-	warnBerserkerStance		= "Berzerker Stance, Stack on Bos!",
+	warnBerserkerStance		= "Berzerker Stance, Stack on Boss!",
 	warnBattleStance			= "Battle Stance, ranged go back!",
 	specWhirldWind 			= "Whirlwind - Move away!"
 }
@@ -476,169 +355,117 @@ L:SetOptionLocalization{
 	nextBladestorm					= "Show timer for next Bladestorm"
 }
 
-----------------
---  Kologarn  --
-----------------
-L = DBM:GetModLocalization("Azeroth")
+
+--------------------------------
+--  Tree_of_Life				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Life")
 
 L:SetGeneralLocalization{
-	name = "Space ?"
-}
-
-L:SetWarningLocalization{
+	name = "Tree of Life"
 }
 
 L:SetTimerLocalization{
+	NextSummonAdds				= "Next Summon Adds",
+	NextBarksin						= "Next Barskin",
+	NextHealingTouch				= "Next Healing Touch",
+}
 
+L:SetMiscLocalization{
+}
+
+L:SetWarningLocalization{
+	BranchSwipe					= "Branch Swipe on >%s< (%d)",
+	BranchSwipeSwitch		= "Branch Swipe on >%s< has %d stacks, swap tanks!",
+	SummonedAdds			= "Adds appeared!",
+	SpecHealingTouch			= "Watch out - Healing Touch!",
+	warningBarskin				= "Barsking is up!"
 }
 
 L:SetOptionLocalization{
-
+	BranchSwipe					= "Announce Branch Swipe >9 stacks",
+	BranchSwipeSwitch		= "Announce Branch Swipe >13 switch",
+	SummonedAdds			= "Announce when adds are spawned",
+	SpecHealingTouch			= "Announce when Healing Touch is casted",
+	warningBarskin				= "Announce when Barskin is up",
+	NextSummonAdds			= "Show timer for next Summon Adds",
+	NextBarksin					= "Show timer for next Barskin",
+	NextHealingTouch			= "Show timer for next Healing Touch",
 }
 
-L:SetMiscLocalization{
-}
 
-
----------------
---  Auriaya  --
----------------
-L = DBM:GetModLocalization("Auriaya")
+--------------------------------
+--  Tree_of_Destruction				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Destruction")
 
 L:SetGeneralLocalization{
-	name = "Auriaya"
-}
-
-L:SetMiscLocalization{
-	Defender = "Feral Defender (%d)",
-	YellPull = "Some things are better left alone!"
+	name = "Tree of Destruction"
 }
 
 L:SetTimerLocalization{
-	timerDefender	= "Feral Defender activates"
+	NextSummonAdds				= "Next Summon Adds",
+	NextIgnitingNova				= "Next Igniting Nova"
+}
+
+L:SetMiscLocalization{
 }
 
 L:SetWarningLocalization{
-	SpecWarnBlast	= "Sentinel Blast - Interrupt now",
-	WarnCatDied		= "Feral Defender down (%d lives remaining)",
-	WarnCatDiedOne	= "Feral Defender down (1 life remaining)",
+	BurningFlesh					= "Burning Flesh on >%s< (%d)",
+	BurningFleshSwitch		= "Burning Flesh on >%s< has %d stacks, swap tanks!",
+	SummonedAdds			= "Adds appeared!",
+	specIgnitingNova			= "Watch out - Igniting Nova!",
+	specWarnFireBomb		= "FireBomb on you!",
 }
 
 L:SetOptionLocalization{
-	SpecWarnBlast	= "Show special warning for Sentinel Blast (to interrupt)",
-	WarnCatDied		= "Show warning when Feral Defender dies",
-	WarnCatDiedOne	= "Show warning when Feral Defender has 1 life remaining",
-	timerDefender	= "Show timer for when Feral Defender is activated"
+	BurningFlesh					= "Announce Burning Flesh stacks",
+	BurningFleshSwitch		= "Announce Branch Swipe >5 switch",
+	FireBomb						= "Announce Living Bomb targets",
+	SummonedAdds			= "Announce Adds",
+	specIgnitingNova			= "Announce when Igniting Nova is being cast",
+	specWarnFireBomb	 	= "Show special warning when you are effected by Fire Bomb",
+	NextSummonAdds			= "Show timer for next Adds",
+	NextIgnitingNova			= " Show timer for next Igniting Nova"
 }
 
--------------
---  Hodir  --
--------------
-L = DBM:GetModLocalization("Hodir")
+--------------------------------
+--  Tree_of_Death				   --
+--------------------------------
+L = DBM:GetModLocalization("Tree_of_Death")
 
 L:SetGeneralLocalization{
-	name = "Hodir"
-}
-
-L:SetWarningLocalization{
+	name = "Tree of Death"
 }
 
 L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	PlaySoundOnFlashFreeze	= "Play sound on $spell:61968 cast",
-	YellOnStormCloud		= "Yell on $spell:65133",
-	SetIconOnStormCloud		= "Set icons on $spell:65133 targets"
+	NextSummonAdds				= "Next Summon Adds",
+	NextDeathNova					= "Next Death Nova",
+	NextVoidBlast					= "Next Void Blast"
 }
 
 L:SetMiscLocalization{
-	YellKill	= "I... I am released from his grasp... at last.",
-	YellCloud	= "Storm Cloud on me!"
-}
 
---------------
---  Thorim  --
---------------
-L = DBM:GetModLocalization("Thorim")
-
-L:SetGeneralLocalization{
-	name = "Thorim"
 }
 
 L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-	TimerHardmode	= "Hard mode"
-}
-
-L:SetOptionLocalization{
-	TimerHardmode	= "Show timer for hard mode",
-	RangeFrame		= "Show range frame",
-	AnnounceFails	= "Post player fails for $spell:62017 to raid chat\n(requires announce to be enabled and leader/promoted status)"
-}
-
-L:SetMiscLocalization{
-	YellPhase1	= "Interlopers! You mortals who dare to interfere with my sport will pay.... Wait--you...",
-	YellPhase2	= "Impertinent whelps, you dare challenge me atop my pedestal? I will crush you myself!",
-	YellKill	= "Stay your arms! I yield!",
-	ChargeOn	= "Lightning Charge: %s",
-	Charge		= "Lightning Charge fails (this try): %s" 
-}
-
--------------
---  Freya  --
--------------
-L = DBM:GetModLocalization("Freya")
-
-L:SetGeneralLocalization{
-	name = "Freya"
-}
-
-L:SetMiscLocalization{
-	SpawnYell          = "Children, assist me!",
-	WaterSpirit        = "Ancient Water Spirit",
-	Snaplasher         = "Snaplasher",
-	StormLasher        = "Storm Lasher",
-	YellKill           = "His hold on me dissipates. I can see clearly once more. Thank you, heroes.",
-	TrashRespawnTimer  = "Freya trash respawn"
-}
-
-L:SetWarningLocalization{
-	WarnSimulKill	= "First add down - Resurrection in ~12 seconds"
-}
-
-L:SetTimerLocalization{
-	TimerSimulKill	= "Resurrection"
+	SoulShatter					= "Soul Shatter on >%s< (%d)",
+	SoulShatterSwitch			= "Burning Flesh on >%s< has %d stacks, swap tanks!",
+	SummonedAdds			= "Adds appeared!",
+	specDeathNova	 			= "Death Nova Run 20 yards away!"
 }
 
 L:SetOptionLocalization{
-	WarnSimulKill	= "Announce first mob down",
-	PlaySoundOnFury = "Play sound when you are affected by $spell:63571",
-	TimerSimulKill	= "Show timer for mob resurrection"
+	SoulShatter					= "Announce Soul Shatter Stacks",
+	SoulShatterSwitch			= "Announce Soul Shatter >5 switch",
+	SummonedAdds			= "Announce Adds",
+	specDeathNova			 	= "Show special warning when Death Nova Happens",
+	NextDeathNova				= "Show timer for Death Nova",
+	NextSummonAdds			= "Show timer for next Adds",
+	NextVoidBlast				= "Show timer for next Void Blast"
 }
 
-----------------------
---  Freya's Elders  --
-----------------------
-L = DBM:GetModLocalization("Freya_Elders")
-
-L:SetGeneralLocalization{
-	name = "Freya's Elders"
-}
-
-L:SetMiscLocalization{
-	TrashRespawnTimer	= "Freya trash respawn"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	PlaySoundOnFistOfStone	= "Play sound on Fists of Stone",
-	TrashRespawnTimer		= "Show timer for trash respawn"
-}
 
 ---------------
 --  Mimiron  --
