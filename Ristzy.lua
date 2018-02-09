@@ -22,24 +22,25 @@ mod:RegisterEvents(
 )
 
 local WarnFelFlamestrike			= mod:NewAnnounce("WarnFelFlameStrike", 2, 97256, false, "OptionFelFlameStrike")
-local WarnRepairBot				= mod:NewAnnounce("specWarnRepairBot", 2)
-local WarnSheepBot				= mod:NewAnnounce("specWarnSheepBot", 2)
+local WarnRepairBot					= mod:NewAnnounce("specWarnRepairBot", 2)
+local WarnSheepBot					= mod:NewAnnounce("specWarnSheepBot", 2)
 local WarnChickenBot				= mod:NewAnnounce("specWarnChickenBot", 2)
 local WarnBombBot					= mod:NewAnnounce("specWarnBombBot", 2)
 local WarnFelInfusion				= mod:NewAnnounce("WarnFelInfusion", 2, 97123)
 local WarnStormCloudOver		= mod:NewAnnounce("WarnStormCloudOver", 2)
+local WarnStormcloudTarget		= mod:NewTargetAnnounce(97262, 2) --added 09-02-2018
 
 local specWarnRepairBot			= mod:NewSpecialWarning("specWarnRepairBot")
 local specWarnSheepBot			= mod:NewSpecialWarning("specWarnSheepBot")
-local specWarnChickenBot		= mod:NewSpecialWarning("specWarnChickenBot")
+local specWarnChickenBot			= mod:NewSpecialWarning("specWarnChickenBot")
 local specWarnBombBot			= mod:NewSpecialWarning("specWarnBombBot")
 local specWarnWorldBreaker		= mod:NewSpecialWarning("specWarnWorldBreaker")
 
-local specWarnFelFlamestrike	= mod:NewSpecialWarningMove(97256)
-local specWarnStormCloud		= mod:NewSpecialWarningMove(97262)
+local specWarnFelFlamestrike		= mod:NewSpecialWarningMove(97256)
+local specWarnStormCloud			= mod:NewSpecialWarningMove(97262)
 
 local timerThunderClap  			= mod:NewTimer(12 , "NextThunderClap")
-local timerTimeBreaker			= mod:NewTimer(60, "NextWorldBreaker")
+local timerTimeBreaker				= mod:NewTimer(60, "NextWorldBreaker")
 local timerStormCloud				= mod:NewTimer(14, "StormCloudCD")
 
 local once = true
@@ -91,6 +92,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnStormCloud:Show()
 			SendChatMessage(L.StormCloud, "Yell")
 		end
+		WarnStormcloudTarget(args.destName) --added 09-02-2018
 		
 	elseif args:IsSpellID(97123) then -- Fel Infusion
 		if args.amount == nil then args.amount = 0 end

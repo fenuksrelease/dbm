@@ -7,6 +7,7 @@ mod:SetCreatureID(570007)
 mod:SetUsedIcons(6)
 
 mod:RegisterCombat("yell", L.YellPull)
+mod:RegisterKill("yell", L.KillIan)
 
 mod:RegisterEvents(
 	"SPELL_AURA_REMOVED",
@@ -21,26 +22,27 @@ mod:RegisterEvents(
 )
 
 
-local WarnBroken				= mod:NewAnnounce("Broken", 2, 97010)
+local WarnBroken					= mod:NewAnnounce("Broken", 2, 97010)
 local WarnExposeWeakness	= mod:NewAnnounce("ExposeWeakness", 2, 97238)
-local warnBombAway			= mod:NewAnnounce("BombSpawned", 4)
+local warnBombAway				= mod:NewAnnounce("BombSpawned", 4)
 
-local WarnGravityBomb		= mod:NewTargetAnnounce(97240, 2)
+local WarnGravityBomb			= mod:NewTargetAnnounce(97240, 2) --added 09-02-2018
 
-local WarnBotsoon				= mod:NewSoonAnnounce(64398, 3)
+local WarnBotsoon					= mod:NewSoonAnnounce(64398, 3)
 
 local specWarnGravityBomb	= mod:NewSpecialWarning("GravityBomb")
 local warnBossHeal				= mod:NewSpecialWarning("warnHealBoss")
 local WarnAirStrike				= mod:NewSpecialWarning("WarnAirStrike")
 local WarnBotsNow				= mod:NewSpecialWarning("WarnBots")
+local specWarnBobNear			= mod:NewSpecialWarning("Bomb!") --added 09-02-2018
 
 
 local timerBomb					= mod:NewNextTimer(10, 97013)
-local timerThunderClap		= mod:NewNextTimer(20, 97012)
+local timerThunderClap			= mod:NewNextTimer(20, 97012)
 local timerNextBroken			= mod:NewNextTimer(8, 97010)
 local timerCapacitor				= mod:NewNextTimer(20, 97009)
 local timerAirStrike				= mod:NewTimer(30, "NextAirStrike")
-local timerBots					= mod:NewTimer(60, "NextScrapBots")
+local timerBots						= mod:NewTimer(60, "NextScrapBots")
 
 
 
@@ -62,6 +64,13 @@ function mod:OnCombatStart(delay)
 	timerCapacitor:Start(15)
 end
 
+function mod:BombTarget() --added 09-02-2018
+	local target = self:GetBossTarget(36597)
+	if not target then return end
+	self:SendSync("BombOn", target)
+end
+
+
 function mod:ResetAirstrike()
 	once = true
 end
@@ -75,6 +84,7 @@ function mod:BombAway()
 	warnBombAway:Show()
 	timerBomb:Start(10)
 	self:ScheduleMethod(10, "BombAway")
+	self:ScheduleMethod(4, "BombTarget") --added 09-02-2018
 		if self.Options.PlaySoundOnBombAway then
 			PlaySoundFile("Sound\\Creature\\AlgalonTheObserver\\UR_Algalon_BHole01.wav")	
 		end	
@@ -97,7 +107,6 @@ function mod:SPELL_HEAL(args)
 		warnBossHeal:Show()
 	end
 end
-
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(97238) then	-- Expose Weakness
@@ -134,6 +143,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			DBM.RangeCheck:Show(12)
 			self:SetIcon(args.destName, 6, 12)
 		end
+		WarnGravityBomb(args.destName) --added 09-02-2018
 	end
 end
 
@@ -145,7 +155,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-
 function mod:SPELL_INSTAKILL(args)
 	if args:IsSpellID(97124) then
 		if args.destName == UnitName("player") then
@@ -154,20 +163,13 @@ function mod:SPELL_INSTAKILL(args)
 	end
 end
 
-
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if (msg == L.Rebuild or msg:find(L.Rebuild)) then
 		WarnBotsNow:Show()
 		timerBots:Start(60)
 		WarnBotsoon:Schedule(50)
-	-- Should not be done this way	
-	--[[
-	elseif (msg == L.Defeat or msg:find(L.Defeat)) then
-		mod.stats.kills = mod.stats.kills + 1
-	--]]
 	end
 end
-
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(97265) then -- air strike
@@ -178,6 +180,28 @@ function mod:SPELL_CAST_SUCCESS(args)
 			WarnAirStrike:Show()
 			once = false
 			self:ScheduleMethod(30, "ResetAirstrike")
+		end
+	end
+end
+
+-- Test feature for bomb
+function mod:OnSync(msg, target)
+	if msg == "BombOn" then
+		if target == UnitName("player") then
+			warnBombAway:Show()
+		elseif target then
+			local uId = DBM:GetRaidUnitId(target)
+			if uId then
+				local inRange = CheckInteractDistance(uId, 2)
+				local x, y = GetPlayerMapPosition(uId)
+				if x == 0 and y == 0 then
+					SetMapToCurrentZone()
+					x, y = GetPlayerMapPosition(uId)
+				end
+				if inRange then
+					specWarnBobNear:Show()
+				end
+			end
 		end
 	end
 end
