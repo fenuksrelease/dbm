@@ -6,4 +6,4 @@ Deadly Boss Mods
 - DBM-BossHealth
 
 # Ulduar Folder
-Remove everything and replace the rest of the lua files in the this folder
+Remove everything and place the rest of the lua files in the this folder
