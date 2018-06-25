@@ -24,12 +24,12 @@ mod:SetBossHealthInfo(
 
 local WarnHex				= mod:NewSpecialWarning("WarnHex")
 local WarnFear				= mod:NewAnnounce("WarnFear", 2)
-local WarnShadowfury		= mod:NewAnnounce("WarnShadowfury", 2)
-local WarnHexTarget		= mod:NewTargetAnnounce(97170, 2)
+local WarnShadowfury			= mod:NewAnnounce("WarnShadowfury", 2)
+local WarnHexTarget			= mod:NewTargetAnnounce(97170, 2)
 
 local timerHex				= mod:NewNextTimer(35, 97170)
 local timerFear				= mod:NewNextTimer(32, 97204)
-local timerShadowfury		= mod:NewNextTimer(20, 97178)
+local timerShadowfury			= mod:NewNextTimer(20, 97178)
 
 
 function mod:OnCombatStart(delay)
