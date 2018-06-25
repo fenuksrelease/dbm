@@ -1,0 +1,39 @@
+## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ulduar|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMUlduar_SavedVars, DBMUlduar_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: WotLK
+## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Name: Ulduar
+
+## X-DBM-Mod-Sort: 4
+--## X-DBM-Mod-LoadZoneID: 530
+## X-DBM-Mod-LoadZone: Ulduar
+
+localization.en.lua
+MapSizes.lua
+Ian.lua
+Jesper.lua
+Jeff.lua
+Ristzy.lua
+ConfusedRaiders.lua
+Space.lua
+Chillich.lua
+Gromash.lua
+Tree_of_Life.lua
+Tree_of_Destruction.lua
+Tree_of_Death.Lua
+Auriaya.lua
+Mimiron.lua
+Freya.lua
+Freya_Elders.lua
+Thorim.lua
+Hodir.lua
+GeneralVezax.lua
+YoggSaron.lua
+Algalon.lua
+YoggSaron-Method.lua
+
+
