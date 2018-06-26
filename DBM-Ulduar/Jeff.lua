@@ -6,7 +6,6 @@ mod:SetCreatureID(570008)
 mod:SetUsedIcons(6)
 
 mod:RegisterCombat("yell", L.YellPullJeff)
--- mod:RegisterKill("yell", L.KillJeff)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
@@ -68,12 +67,23 @@ function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "Shadow Bolt Volley" and unit == "boss1" then
 		specWarnShadowVolley:Show()
 		timerShadowVolley:Start()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				local channel = ((GetNumRaidMembers() == 0) and "PARTY") or "RAID_WARNING"
+				SendChatMessage(Volley_RW, channel)
+			end
+		end
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(97071) then -- Nether Protection
 		WarnNetherProtection:Show()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(Nether_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 

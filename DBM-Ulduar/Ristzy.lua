@@ -6,10 +6,6 @@ mod:SetCreatureID(570010)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 
 mod:RegisterCombat("yell", L.YellPullRistzy)
--- mod:RegisterCombat("combat")
-
-
-
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
@@ -85,6 +81,11 @@ function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "World Breaker" and unit == "boss2" then
 		specWarnWorldBreaker:Show()
 		timerTimeBreaker:Start()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(WorldBreaker_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 
@@ -93,6 +94,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args.destName == UnitName("player") then
 			specWarnStormCloud:Show()
 			SendChatMessage(L.StormCloud, "Yell")
+		end
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(args.destName.." "..Stormcloud_RW, "RAID_WARNING")
+			end
 		end
 		WarnStormcloudTarget(args.destName) --added 09-02-2018
 		

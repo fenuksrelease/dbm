@@ -42,6 +42,11 @@ function mod:SPELL_SUMMON(args)
 	if args:IsSpellID(97318) then -- Adds
 		if AddsReset == false then 
 			WarnSummonAdds:Show()
+			if self.Options.Announce then
+				if DBM:GetRaidRank() > 0 then
+					SendChatMessage(LifeAdds_RW, "RAID_WARNING")
+				end
+			end
 			timerSummonAdds:Start()
 			AddsReset = true 
 			self:ScheduleMethod(5, "Adds")

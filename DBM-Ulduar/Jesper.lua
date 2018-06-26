@@ -54,6 +54,11 @@ function mod:MoltenGiant()
 	WarnMoltenGiant:Show()
 	timerMoltenGiant:Start()
 	self:ScheduleMethod(60, "MoltenGiant")
+	if self.Options.Announce then
+		if DBM:GetRaidRank() > 0 then
+			SendChatMessage(MoltenGiant_RW, "RAID_WARNING")
+		end
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)

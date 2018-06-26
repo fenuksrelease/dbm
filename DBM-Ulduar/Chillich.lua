@@ -41,6 +41,11 @@ end
 
 function mod:NecromancyPhase()
 	WarnNecromancy:Show()
+	if self.Options.Announce then
+		if DBM:GetRaidRank() > 0 then
+			SendChatMessage(NecromancyPhase_RW, "RAID_WARNING")
+		end
+	end
 end
 
 function mod:BlizzardReset()
@@ -51,8 +56,12 @@ end
 local IceBlocks = {}
 function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "Blistering Cold"  and unit == "boss1" then
-		--SendChatMessage("RUN BEHIND ICEBLOCKS LITTLE MELONS!!! RUN!!!", "RAID_WARNING")
 		specWarnBlisteringCold:Show()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(Iceblocks_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 
@@ -81,11 +90,15 @@ function mod:SPELL_CAST_SUCCESS(args)
 
 	if args:IsSpellID(97266) then -- Blizzard
 		if once == false then
-			--SendChatMessage("Watch out for the Blizzard!", "RAID_WARNING")
-			WarnBlizzard:Show()
-			once = true
-			self:ScheduleMethod(45, "BlizzardReset")
+			if self.Options.Announce then
+				if DBM:GetRaidRank() > 0 then
+					SendChatMessage(Blizzard_RW, "RAID_WARNING")
+				end
+			end
 		end
+		WarnBlizzard:Show()
+		once = true
+		self:ScheduleMethod(45, "BlizzardReset")
 	end
 end
 
@@ -94,20 +107,5 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerNecromancy:Start()
 	end
 end
-
---[[
-function mod:UNIT_DIED(args)
-	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
-		local guid = tonumber(args.destGUID:sub(8, 12), 16)
-		if guid == 570102 then -- Soul Weaver
-			SoulWeaver = SoulWeaver + 1
-				if SoulWeaver == 4 then
-					timerNecromancy:Start()
-					self:ScheduleMethod(99, "NecromancyPhase")
-				end
-		end
-	end
-end
---]]
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

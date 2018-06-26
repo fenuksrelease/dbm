@@ -41,6 +41,11 @@ function mod:StanceSwitch()
 		stance = 2
 		self:ScheduleMethod(60, "StanceSwitch")
 		warnBerserker:Show()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(BerserkerStance_RW, "RAID_WARNING")
+			end
+		end
 		timerWhirlwind:Stop()
 		timerBladestorm:Start(10)
 	elseif stance == 2 then
@@ -48,6 +53,11 @@ function mod:StanceSwitch()
 		stance = 1
 		self:ScheduleMethod(60, "StanceSwitch")
 		warnBattle:Show()
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(BattleStance_RW, "RAID_WARNING")
+			end
+		end
 		timerBladestorm:Stop()
 		timerWhirlwind:Start(10.5)
 	end
@@ -63,7 +73,11 @@ end
 
 function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "Whirlwind" and unit == "boss1" then
-		--SendChatMessage("RUN LITTLE MELONS!!! RUN!!!!", "RAID_WARNING")
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(Whirlwind_RW, "RAID_WARNING")
+			end
+		end
 		specWarnWhirldWind:Show()
 	end
 end

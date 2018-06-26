@@ -22,7 +22,7 @@ mod:RegisterEvents(
 )
 
 
-local WarnBroken					= mod:NewAnnounce("Broken", 2, 97010)
+local WarnBroken					= mod:NewAnnounce("Broken", 2, 97010,nil, "announces")
 local WarnExposeWeakness	= mod:NewAnnounce("ExposeWeakness", 2, 97238)
 local warnBombAway				= mod:NewAnnounce("BombSpawned", 4)
 
@@ -62,6 +62,8 @@ function mod:OnCombatStart(delay)
 	timerNextBroken:Start(8)
 	WarnBotsoon:Schedule(50)
 	timerCapacitor:Start(15)
+	
+	
 end
 
 function mod:BombTarget() --added 09-02-2018
@@ -143,7 +145,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			DBM.RangeCheck:Show(12)
 			self:SetIcon(args.destName, 6, 12)
 		end
-		WarnGravityBomb(args.destName) --added 09-02-2018
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(args.destName.." "..Gravity_RW, "RAID_WARNING")
+			end
+		end
+		-- WarnGravityBomb(args.destName) --added 09-02-2018
 	end
 end
 
@@ -168,6 +175,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		WarnBotsNow:Show()
 		timerBots:Start(60)
 		WarnBotsoon:Schedule(50)
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(Repairbot_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 

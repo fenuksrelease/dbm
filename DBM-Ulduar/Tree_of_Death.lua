@@ -40,10 +40,20 @@ function mod:Adds()
 		timerSummonAdds:Start(53)
 		self:ScheduleMethod(53, "Adds")
 		FirstAddWave = false
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(DeathAdds_RW, "RAID_WARNING")
+			end
+		end
 	else
 		WarnSummonAdds:Show()
 		timerSummonAdds:Start(50)
 		self:ScheduleMethod(50, "Adds")
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(DeathAdds_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 
@@ -65,6 +75,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			WarnSoulShatter:Show(args.destName, args.amount)
 		elseif args.amount >= 3 then
 			WarnSoulShatterSwitch:Show(args.destName, args.amount)
+			if self.Options.Announce then
+				if DBM:GetRaidRank() > 0 then
+					SendChatMessage(args.destName.. " "..SoulShatter_RW.." "..args.amount.." stacks!", "RAID_WARNING")
+				end
+			end
+			
 		end
 	end
 end
@@ -73,6 +89,11 @@ function mod:UNIT_SPELLCAST_START(unit,spell)
 	if spell == "Death Nova" and unit == "boss1" then
 		SpecWarnDeathNova:Show()
 		timerDeathNova:Start()
+		if self.Options.Announce then
+				if DBM:GetRaidRank() > 0 then
+					SendChatMessage(DeathNova_RW, "RAID_WARNING")
+				end
+			end
 	end
 end
 

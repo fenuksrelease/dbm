@@ -53,10 +53,20 @@ function mod:Adds()
 		timerSummonAdds:Start(55.5)
 		self:ScheduleMethod(55.5, "Adds")
 		FirstAddWave = false
+		if self.Options.Announce then
+				if DBM:GetRaidRank() > 0 then
+					SendChatMessage(DesAdds_RW, "RAID_WARNING")
+				end
+			end
 	else
 		WarnSummonAdds:Show()
 		timerSummonAdds:Start()
 		self:ScheduleMethod(50, "Adds")
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(DesAdds_RW, "RAID_WARNING")
+			end
+		end
 	end
 end
 
@@ -76,7 +86,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		self:UnscheduleMethod("AnnounceLivingBombTargets")
 		self:ScheduleMethod(0.5, "AnnounceLivingBombTargets")
 		
-
+		if self.Options.Announce then
+			if DBM:GetRaidRank() > 0 then
+				SendChatMessage(args.destName.." "..LivingBomb_RW, "RAID_WARNING")
+			end
+		end
 		if args.destName == UnitName("player") then
 			timercountdown:Start()
 			specWarnFireBomb:Show()
