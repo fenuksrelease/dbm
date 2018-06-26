@@ -67,10 +67,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		
 	elseif args:IsSpellID(97204) then -- Psychic Scream
-		print("test Psychic")
+		-- print("test Psychic")
 		
 		elseif args:IsSpellID(97178) then -- Shadowfury
-		print("test Shadow")
+		-- print("test Shadow")
 	end
 end
 
