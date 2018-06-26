@@ -3771,6 +3771,7 @@ end
 ------------------------
 
 local CountdownVoice = "Corsica"
+-- Mosh might be added later and will can be configured in the DBM core panel
 do
 	local countdownProtoType = {}
 	local mt = {__index = countdownProtoType}
