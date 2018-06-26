@@ -100,7 +100,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				SendChatMessage(args.destName.." "..Stormcloud_RW, "RAID_WARNING")
 			end
 		end
-		WarnStormcloudTarget(args.destName) --added 09-02-2018
 		
 	elseif args:IsSpellID(97123) then -- Fel Infusion
 		if args.amount == nil then args.amount = 0 end
