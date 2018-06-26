@@ -1,18 +1,18 @@
 --[[ Wing 1 ]]--
 -- Ian
-Gravity_RW			= "has Gravity Bomb!" -- results in: "PLAYERNAME has Gravity Bomb!"
-Repairbot_RW			= "Repair bots appeared!"
+Gravity_RW				= "has Gravity Bomb!" -- results in: "PLAYERNAME has Gravity Bomb!"
+Repairbot_RW				= "Repair bots appeared!"
 
 -- Jeff
 Nether_RW				= "Nether Protection removed!"
 Volley_RW				= "Watchout - Shadow Bolt Volley!"
 
 -- Jesper
-MoltenGiant_RW		= "Molten Giant appeared!"
+MoltenGiant_RW				= "Molten Giant appeared!"
 
 -- Ristzy
-Stormcloud_RW		= "has Stormcloud!" -- results in: "PLAYERNAME has Stormcloud!"
-WorldBreaker_RW	= "World Breaker - come closer!"
+Stormcloud_RW				= "has Stormcloud!" -- results in: "PLAYERNAME has Stormcloud!"
+WorldBreaker_RW				= "World Breaker - come closer!"
 
 --[[ Wing 2 ]]--
 -- Confusedraiders
@@ -22,27 +22,27 @@ WorldBreaker_RW	= "World Breaker - come closer!"
 	-- Bugged boss nothing to announce yet
 
 -- Chillich
-Iceblocks_RW			= "Run behind iceblocks!"
-Blizzard_RW			= "Watchout, blizzard!"
-NecromancyPhase_RW = "Necromancy - focus adds!"
+Iceblocks_RW				= "Run behind iceblocks!"
+Blizzard_RW				= "Watchout, blizzard!"
+NecromancyPhase_RW 			= "Necromancy - focus adds!"
 
 -- Gromash
-Whirlwind_RW		= "Run away from the boss!"
-BattleStance_RW	= "Battle Stance, ranged go back!"
-BerserkerStance_RW= "Berzerker Stance, Stack on Boss!"
+Whirlwind_RW				= "Run away from the boss!"
+BattleStance_RW				= "Battle Stance, ranged go back!"
+BerserkerStance_RW			= "Berzerker Stance, Stack on Boss!"
 
 --[[ Wing 3 ]]--
 -- Tree of Life
-LifeAdds_RW			= "Adds appeared!"
+LifeAdds_RW				= "Adds appeared!"
 
 -- Tree of Destruction
-DesAdds_RW			= "Adds appeared!"
-LivingBomb_RW		= "has Living Bomb!" -- results in: "PLAYERNAME has Stormcloud!"
+DesAdds_RW				= "Adds appeared!"
+LivingBomb_RW				= "has Living Bomb!" -- results in: "PLAYERNAME has Living Bomb!"
 
 -- Tree of Death
-DeathAdds_RW		= "Adds appeared!"
-SoulShatter_RW		= "has" -- results in: "PLAYERNAME has AMOUNT stacks!"
-DeathNova_RW		= "Death Nova, run away!"
+DeathAdds_RW				= "Adds appeared!"
+SoulShatter_RW				= "has" -- results in: "PLAYERNAME has AMOUNT stacks!"
+DeathNova_RW				= "Death Nova, run away!"
 
 
 
