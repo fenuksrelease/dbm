@@ -24,12 +24,19 @@ local specWarnBlisteringCold	= mod:NewSpecialWarning("specWarnBlisteringCold")
 local WarnNecromancy 	= mod:NewAnnounce("Necromancy", 3)
 local WarnIceBlock 			= mod:NewAnnounce("WarnIceBlock", 2, 97208, false, "OptionIceBlock")
 local WarnBlizzard			= mod:NewAnnounce("WarnBlizzard", 3, 97266)
+local WarnSoulweaver		= mod:NewAnnounce("WarnSoulweaver", 3)
+local WarnAbomination	= mod:NewAnnounce("WarnAbomination", 3)
+
 
 local timerNecromancy		= mod:NewTimer(90, "NextNecromancy")
 local timerEntomb			= mod:NewTimer(40, "NextEntomb")
+local timerBlizzard		    = mod:NewTimer(61, "NextBlizzard")
+
+local timerSoulWeaver					= mod:NewTimer(12, "NextSoulWeaver")
+local timerRottingAbomination 		= mod:NewTimer(20, "NextRottingAbomination")
 
 local once = false
-local SoulWeaver = 0
+local necromancy = false
 
 function mod:OnCombatStart(delay)	
 	timerNecromancy:Start(70)
@@ -39,12 +46,36 @@ function mod:OnCombatStart(delay)
 	local SoulWeaver = 0
 end
 
+function mod:TimerSoul()
+	if necromancy == true then
+		timerSoulWeaver:Start()
+		WarnSoulweaver:Show()
+	end
+end
+
+function mod:TimerAbomin()
+	if necromancy == true then
+		timerRottingAbomination:Start()
+		WarnAbomination:Show()
+	end
+end
+
 function mod:NecromancyPhase()
+	necromancy = true
 	WarnNecromancy:Show()
+	timerEntomb:Start(100)
+	timerBlizzard:Start()
 	if self.Options.Announce then
 		if DBM:GetRaidRank() > 0 then
 			SendChatMessage(NecromancyPhase_RW, "RAID_WARNING")
 		end
+	end
+	
+	if necromancy == true then
+		timerSoulWeaver:Start()
+		self:ScheduleMethod(12, "TimerSoul")
+		timerRottingAbomination:Start()
+		self:ScheduleMethod(20, "TimerAbomin")
 	end
 end
 
@@ -95,16 +126,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 					SendChatMessage(Blizzard_RW, "RAID_WARNING")
 				end
 			end
+			WarnBlizzard:Show()
+			once = true
+			self:ScheduleMethod(45, "BlizzardReset")
 		end
-		WarnBlizzard:Show()
-		once = true
-		self:ScheduleMethod(45, "BlizzardReset")
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(97213) then
 		timerNecromancy:Start()
+		necromancy = false
 	end
 end
 
